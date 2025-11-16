@@ -297,9 +297,9 @@ export function UserEnvironmentDiagram() {
 
   return (
     <div className="w-full bg-gradient-to-br from-slate-50 to-blue-50 p-12 rounded-lg">
-      <h2 className="text-3xl font-bold text-slate-900 mb-2">AITruism Architecture</h2>
+      <h2 className="text-3xl font-bold text-slate-900 mb-2">Architecture Diagram</h2>
       <p className="text-slate-600 mb-12 text-lg">
-        Comprehensive AI Trust, Risk & Security Management Platform
+        AI Trust Platform architecture
       </p>
 
       <div className="relative w-full flex flex-col gap-12">
