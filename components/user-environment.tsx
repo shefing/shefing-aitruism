@@ -21,6 +21,7 @@ export function UserEnvironmentDiagram() {
     'knowledge': ['app-rag'], // Emerald arrow
     'control': ['cp-gateway', 'cp-mcp'], // Orange arrows - both Control Plane monitoring arrows
     'validation': ['cp-rag'], // Rose arrow
+    'users': ['user-app', 'user-platform'], // New group for user interactions
   };
 
   // Helper function to get flow type from flow ID
@@ -40,6 +41,22 @@ export function UserEnvironmentDiagram() {
   };
 
   const dataFlows: DataFlow[] = [
+    {
+      from: 'app-user',
+      to: 'agentic-app',
+      label: 'User Interactions',
+      description: 'User executing business use cases using the agentic app',
+      color: 'from-indigo-500 to-indigo-400',
+      colorHex: '#6366f1',
+    },
+    {
+      from: 'omniguard-user',
+      to: 'control-plane',
+      label: 'Platform Management',
+      description: 'User monitoring and controlling agentic apps using Omniguard',
+      color: 'from-indigo-500 to-indigo-400',
+      colorHex: '#6366f1',
+    },
     {
       from: 'agentic-app',
       to: 'llm-gateway',
@@ -162,7 +179,43 @@ export function UserEnvironmentDiagram() {
           >
             <polygon points="0 0, 10 3, 0 6" fill="#f43f5e" />
           </marker>
+          <marker
+            id="arrowhead-indigo"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#6366f1" />
+          </marker>
         </defs>
+
+        {/* Agentic App User → Agentic App */}
+        <path
+          d="M 95 285 L 95 100 L 170 100"
+          stroke="#6366f1"
+          strokeWidth={isFlowHighlighted('user-app') ? "3.5" : "2.5"}
+          fill="none"
+          markerEnd="url(#arrowhead-indigo)"
+          opacity={hoveredFlow && !isFlowHighlighted('user-app') ? 0.2 : 1}
+          onMouseEnter={() => setHoveredFlow('user-app')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
+        />
+
+        {/* Omniguard User → Control Plane Platform */}
+        <path
+          d="M 1050 285 L 1020 285"
+          stroke="#6366f1"
+          strokeWidth={isFlowHighlighted('user-platform') ? "3.5" : "2.5"}
+          fill="none"
+          markerEnd="url(#arrowhead-indigo)"
+          opacity={hoveredFlow && !isFlowHighlighted('user-platform') ? 0.2 : 1}
+          onMouseEnter={() => setHoveredFlow('user-platform')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
+        />
 
         {/* Agentic App → LLM Gateway */}
         <path
@@ -499,7 +552,9 @@ export function UserEnvironmentDiagram() {
                            flow.from === 'agentic-app' && flow.to === 'rag-resources' ? 'app-rag' :
                            flow.from === 'control-plane' && flow.to === 'llm-gateway' ? 'cp-gateway' :
                            flow.from === 'control-plane' && flow.to === 'mcp-monitor' ? 'cp-mcp' :
-                           flow.from === 'control-plane' && flow.to === 'rag-resources' ? 'cp-rag' : '';
+                           flow.from === 'control-plane' && flow.to === 'rag-resources' ? 'cp-rag' :
+                           flow.from === 'app-user' && flow.to === 'agentic-app' ? 'user-app' :
+                           flow.from === 'omniguard-user' && flow.to === 'control-plane' ? 'user-platform' : '';
               
               const isHighlighted = isFlowHighlighted(flowId);
               const opacity = hoveredFlow && !isHighlighted ? 'opacity-30' : 'opacity-100';
