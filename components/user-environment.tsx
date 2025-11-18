@@ -358,7 +358,7 @@ export function UserEnvironmentDiagram() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border-2 border-slate-300 shadow-lg flex-shrink-0" style={{ width: '500px', minHeight: '600px' }}>
+        <div className="bg-white rounded-2xl p-6 border-2 border-slate-300 shadow-lg flex-shrink-0" style={{ width: '450px', minHeight: '600px' }}>
           <h3 className="text-xl font-bold text-slate-900 mb-4 text-center">Customer environment</h3>
           
           <div className="flex flex-col gap-5">
@@ -454,7 +454,7 @@ export function UserEnvironmentDiagram() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-500 shadow-xl" style={{ width: '700px', minHeight: '600px' }}>
+        <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-500 shadow-xl" style={{ width: '750px', minHeight: '600px' }}>
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-slate-900 mb-1">OmniGuard AI Control Plane</h3>
             <p className="text-slate-600 text-sm">Central orchestration & policy hub</p>
@@ -543,7 +543,7 @@ export function UserEnvironmentDiagram() {
       {showDataFlows && (
         <div className="bg-white rounded-lg border border-slate-200 p-8 mt-12">
           <h3 className="text-lg font-bold text-slate-900 mb-6">Data Flows</h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {dataFlows.map((flow, index) => {
               const flowId = flow.from === 'agentic-app' && flow.to === 'llm-gateway' ? 'app-gateway' :
                            flow.from === 'llm-gateway' && flow.to === 'external-llm' ? 'gateway-llm' :
