@@ -104,125 +104,109 @@ export function UserEnvironmentDiagram() {
           </div>
         </div>
 
-        {/* Left Side - All Component Boxes in 2-column grid */}
-        <div className="bg-white rounded-2xl p-6 border-2 border-slate-300 shadow-lg" style={{ width: '480px' }}>
-          <div className="grid grid-cols-2 gap-4">
-            {/* Agentic App */}
+        <div className="bg-white rounded-2xl p-6 border-2 border-slate-300 shadow-lg flex-shrink-0" style={{ width: '500px', minHeight: '600px' }}>
+          <h3 className="text-xl font-bold text-slate-900 mb-4 text-center">Customer environment</h3>
+          
+          <div className="flex flex-col gap-5">
             <div className="bg-white border-2 border-blue-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                   <span className="text-blue-600 font-bold text-base">🤖</span>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">Agentic App</h3>
+                <h3 className="text-base font-bold text-slate-900">Agentic App</h3>
               </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
+              <p className="text-slate-600 text-sm leading-relaxed">
                 AI application that orchestrates interactions with external systems
               </p>
             </div>
 
-            {/* App Sidecar */}
-            <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">📡</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">📡</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">App Sidecar</h3>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">App Sidecar</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Deep behavioral analysis via OTEL and more
+                </p>
               </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Deep behavioral analysis via OTEL and more
-              </p>
-            </div>
 
-            {/* LLM Gateway */}
-            <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">🛡️</span>
+              <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">🛡️</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">LLM Gateway</h3>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">LLM Gateway</h3>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Monitors and routes all prompts between Agentic App and external LLMs
-              </p>
-            </div>
-
-            {/* MCP Monitor */}
-            <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">🔍</span>
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">MCP Monitor</h3>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Observes and controls all tool invocations via MCP
-              </p>
-            </div>
-
-            {/* External LLMs */}
-            <div className="bg-white border-2 border-blue-400 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">🧠</span>
-                </div>
-                <h3 className="text-sm font-bold text-slate-900">External LLMs</h3>
-              </div>
-              <p className="text-slate-600 text-xs leading-relaxed mb-1">
-                Third-party language models providing AI reasoning
-              </p>
-              <div className="text-xs text-slate-500">
-                <span className="font-semibold">Providers:</span> OpenAI, Anthropic...
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Monitors and routes all prompts
+                </p>
               </div>
             </div>
 
-            {/* MCP Tools */}
-            <div className="bg-white border-2 border-purple-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">⚙️</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white border-2 border-emerald-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">📚</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">RAG / Resources</h3>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">MCP Tools</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Knowledge base and retrieval system
+                </p>
               </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Model Context Protocol tools for external actions
-              </p>
+
+              <div className="bg-white border-2 border-blue-400 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">🧠</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">External LLMs</h3>
+                </div>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  OpenAI, Anthropic, Google...
+                </p>
+              </div>
             </div>
 
-            {/* RAG / Resources */}
-            <div className="bg-white border-2 border-emerald-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <span className="text-base">📚</span>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">🔍</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">MCP Monitor</h3>
                 </div>
-                <h3 className="text-sm font-bold text-slate-900">RAG / Resources</h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Observes and controls tool invocations
+                </p>
               </div>
-              <p className="text-slate-600 text-xs leading-relaxed">
-                Knowledge base and retrieval-augmented generation system
-              </p>
+
+              <div className="bg-white border-2 border-purple-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <span className="text-base">⚙️</span>
+                  </div>
+                  <h3 className="text-sm font-bold text-slate-900">MCP Tools</h3>
+                </div>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Model Context Protocol tools
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="flex-1 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-500 shadow-xl">
-          <div className="flex items-center justify-center gap-4 mb-3">
-            <div className="px-3 py-1 bg-cyan-100 border border-cyan-400 rounded-lg text-cyan-700 text-xs font-semibold">
-              Rules
-            </div>
-            <div className="w-10 h-10 bg-cyan-200 rounded-full flex items-center justify-center">
-              <span className="text-2xl">⚙️</span>
-            </div>
-            <div className="px-3 py-1 bg-cyan-100 border border-cyan-400 rounded-lg text-cyan-700 text-xs font-semibold">
-              Audit logs
-            </div>
-          </div>
-
+        <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-500 shadow-xl" style={{ width: '700px', minHeight: '600px' }}>
           <div className="text-center mb-6">
             <h3 className="text-2xl font-bold text-slate-900 mb-1">Control Plane Platform</h3>
             <p className="text-slate-600 text-sm">Central orchestration & policy hub</p>
           </div>
 
           <div className="grid grid-cols-3 gap-4">
-            {/* Row 1: Discovery, Policy, Observability */}
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">🔍</span>
@@ -260,7 +244,6 @@ export function UserEnvironmentDiagram() {
               </div>
             </div>
 
-            {/* Row 3: RAG Client, Analytics, Security */}
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">✓</span>
@@ -298,51 +281,11 @@ export function UserEnvironmentDiagram() {
           </div>
         </div>
 
-        {/* SVG Connections Overlay - Hidden for now */}
         <div className="absolute inset-0 pointer-events-none">
           {renderSVGConnections()}
         </div>
-
-        {/* Tooltips - Hidden since arrows are hidden */}
-        {hoveredFlow === 'llm-flow' && (
-          <div className="absolute top-4 left-64 z-30 bg-white rounded-lg p-3 shadow-lg border border-blue-200 w-52">
-            <div className="text-sm font-bold text-blue-600 mb-1">Prompts & Responses</div>
-            <p className="text-xs text-slate-600">Agentic App → LLM Gateway → External LLMs</p>
-          </div>
-        )}
-        {hoveredFlow === 'mcp-flow' && (
-          <div className="absolute top-40 left-48 z-30 bg-white rounded-lg p-3 shadow-lg border border-purple-200 w-52">
-            <div className="text-sm font-bold text-purple-600 mb-1">Tool Calls & Execution</div>
-            <p className="text-xs text-slate-600">Agentic App → MCP Monitor → MCP Tools</p>
-          </div>
-        )}
-        {hoveredFlow === 'rag-flow' && (
-          <div className="absolute bottom-32 left-64 z-30 bg-white rounded-lg p-3 shadow-lg border border-emerald-200 w-52">
-            <div className="text-sm font-bold text-emerald-600 mb-1">Knowledge Queries</div>
-            <p className="text-xs text-slate-600">Agentic App queries RAG/Resources for knowledge retrieval</p>
-          </div>
-        )}
-        {hoveredFlow === 'cp-to-gw' && (
-          <div className="absolute top-12 right-96 z-30 bg-white rounded-lg p-3 shadow-lg border border-orange-200 w-52">
-            <div className="text-sm font-bold text-orange-600 mb-1">Policy Control</div>
-            <p className="text-xs text-slate-600">Control Plane monitors and controls LLM Gateway</p>
-          </div>
-        )}
-        {hoveredFlow === 'cp-to-monitor' && (
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 bg-white rounded-lg p-3 shadow-lg border border-amber-200 w-52">
-            <div className="text-sm font-bold text-amber-600 mb-1">Policy Control</div>
-            <p className="text-xs text-slate-600">Control Plane controls MCP Monitor</p>
-          </div>
-        )}
-        {hoveredFlow === 'cp-to-rag' && (
-          <div className="absolute bottom-16 right-96 z-30 bg-white rounded-lg p-3 shadow-lg border border-rose-200 w-52">
-            <div className="text-sm font-bold text-rose-600 mb-1">Validation Queries</div>
-            <p className="text-xs text-slate-600">Control Plane queries RAG for validation</p>
-          </div>
-        )}
       </div>
 
-      {/* Data Flows Legend */}
       <div className="bg-white rounded-lg border border-slate-200 p-8 mt-12">
         <h3 className="text-lg font-bold text-slate-900 mb-6">Data Flows</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
