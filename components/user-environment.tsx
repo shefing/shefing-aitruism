@@ -456,7 +456,7 @@ export function UserEnvironmentDiagram() {
 
         <div className="bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-500 shadow-xl" style={{ width: '700px', minHeight: '600px' }}>
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-1">Control Plane Platform</h3>
+            <h3 className="text-2xl font-bold text-slate-900 mb-1">OmniGuard AI Control Plane</h3>
             <p className="text-slate-600 text-sm">Central orchestration & policy hub</p>
           </div>
 
