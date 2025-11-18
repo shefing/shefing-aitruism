@@ -490,8 +490,8 @@ export function UserEnvironmentDiagram() {
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mb-3 shadow-lg">
                   <span className="text-4xl">🧠</span>
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">JudgeLLMs</h4>
-                <p className="text-sm text-slate-700 font-medium mb-1">AI-Powered Security Evaluation</p>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">Behavioral Monitoring</h4>
+                <p className="text-sm text-slate-700 font-medium mb-1">AI-powered adaptive behavioral monitoring</p>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   Llama Firewall, NVidia Nemo, MS Presidio
                 </p>
