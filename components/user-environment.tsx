@@ -15,6 +15,30 @@ export function UserEnvironmentDiagram() {
   const [hoveredFlow, setHoveredFlow] = useState<string | null>(null);
   const [showDataFlows, setShowDataFlows] = useState(false);
 
+  const flowTypes = {
+    'prompts': ['app-gateway', 'gateway-llm'], // Blue arrows
+    'tools': ['app-mcp', 'mcp-tools'], // Purple arrows
+    'knowledge': ['app-rag'], // Emerald arrow
+    'control': ['cp-gateway', 'cp-mcp'], // Orange arrows - both Control Plane monitoring arrows
+    'validation': ['cp-rag'], // Rose arrow
+  };
+
+  // Helper function to get flow type from flow ID
+  const getFlowType = (flowId: string): string | null => {
+    for (const [type, flows] of Object.entries(flowTypes)) {
+      if (flows.includes(flowId)) return type;
+    }
+    return null;
+  };
+
+  // Helper function to check if a flow should be highlighted
+  const isFlowHighlighted = (flowId: string): boolean => {
+    if (!hoveredFlow) return false;
+    const hoveredType = getFlowType(hoveredFlow);
+    const currentType = getFlowType(flowId);
+    return hoveredType === currentType;
+  };
+
   const dataFlows: DataFlow[] = [
     {
       from: 'agentic-app',
@@ -69,8 +93,8 @@ export function UserEnvironmentDiagram() {
       to: 'mcp-monitor',
       label: 'Policy Control',
       description: 'Control Plane Platform controls MCP Monitor via policies',
-      color: 'from-amber-500 to-amber-400',
-      colorHex: '#f59e0b',
+      color: 'from-orange-500 to-orange-400',
+      colorHex: '#f97316',
     },
     {
       from: 'control-plane',
@@ -129,16 +153,6 @@ export function UserEnvironmentDiagram() {
             <polygon points="0 0, 10 3, 0 6" fill="#f97316" />
           </marker>
           <marker
-            id="arrowhead-amber"
-            markerWidth="10"
-            markerHeight="10"
-            refX="9"
-            refY="3"
-            orient="auto"
-          >
-            <polygon points="0 0, 10 3, 0 6" fill="#f59e0b" />
-          </marker>
-          <marker
             id="arrowhead-rose"
             markerWidth="10"
             markerHeight="10"
@@ -154,104 +168,104 @@ export function UserEnvironmentDiagram() {
         <path
           d="M 410 125 L 450 125 L 450 220"
           stroke="#3b82f6"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('app-gateway') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-blue)"
-          opacity={hoveredFlow === 'app-gateway' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('app-gateway') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('app-gateway')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* LLM Gateway → External LLMs (horizontal across) */}
         <path
           d="M 470 260 L 540 260 L 540 335"
           stroke="#3b82f6"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('gateway-llm') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-blue)"
-          opacity={hoveredFlow === 'gateway-llm' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('gateway-llm') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('gateway-llm')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* Agentic App → MCP Monitor */}
         <path
           d="M 270 145 L 270 500"
           stroke="#a855f7"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('app-mcp') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-purple)"
-          opacity={hoveredFlow === 'app-mcp' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('app-mcp') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('app-mcp')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* MCP Monitor → MCP Tools */}
         <path
           d="M 380 540 L 430 540"
           stroke="#a855f7"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('mcp-tools') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-purple)"
-          opacity={hoveredFlow === 'mcp-tools' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('mcp-tools') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('mcp-tools')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* Agentic App → RAG / Resources */}
         <path
           d="M 230 145 L 230 335"
           stroke="#10b981"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('app-rag') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-emerald)"
-          opacity={hoveredFlow === 'app-rag' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('app-rag') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('app-rag')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* Control Plane → LLM Gateway */}
         <path
           d="M 640 240 Q 580 240 500 240"
           stroke="#f97316"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('cp-gateway') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-orange)"
-          opacity={hoveredFlow === 'cp-gateway' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('cp-gateway') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('cp-gateway')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* Control Plane → MCP Monitor */}
         <path
           d="M 640 500 Q 560 500 380 520"
-          stroke="#f59e0b"
-          strokeWidth="2.5"
+          stroke="#f97316" // Changed from amber to orange to match LLM Gateway arrow
+          strokeWidth={isFlowHighlighted('cp-mcp') ? "3.5" : "2.5"}
           fill="none"
-          markerEnd="url(#arrowhead-amber)"
-          opacity={hoveredFlow === 'cp-mcp' ? 1 : 0.7}
+          markerEnd="url(#arrowhead-orange)" // Changed from amber to orange arrowhead
+          opacity={hoveredFlow && !isFlowHighlighted('cp-mcp') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('cp-mcp')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
 
         {/* Control Plane → RAG / Resources */}
         <path
           d="M 640 370 Q 500 370 350 370"
           stroke="#f43f5e"
-          strokeWidth="2.5"
+          strokeWidth={isFlowHighlighted('cp-rag') ? "3.5" : "2.5"}
           fill="none"
           markerEnd="url(#arrowhead-rose)"
-          opacity={hoveredFlow === 'cp-rag' ? 1 : 0.7}
+          opacity={hoveredFlow && !isFlowHighlighted('cp-rag') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('cp-rag')}
           onMouseLeave={() => setHoveredFlow(null)}
-          className="pointer-events-auto cursor-pointer"
+          className="pointer-events-auto cursor-pointer transition-all duration-200"
         />
       </svg>
     );
@@ -477,14 +491,33 @@ export function UserEnvironmentDiagram() {
         <div className="bg-white rounded-lg border border-slate-200 p-8 mt-12">
           <h3 className="text-lg font-bold text-slate-900 mb-6">Data Flows</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {dataFlows.map((flow, index) => (
-              <div key={index} className="border-l-4 border-slate-300 pl-4">
-                <div className={`text-sm font-bold bg-gradient-to-r ${flow.color} bg-clip-text text-transparent mb-2`}>
-                  {flow.label}
+            {dataFlows.map((flow, index) => {
+              const flowId = flow.from === 'agentic-app' && flow.to === 'llm-gateway' ? 'app-gateway' :
+                           flow.from === 'llm-gateway' && flow.to === 'external-llm' ? 'gateway-llm' :
+                           flow.from === 'agentic-app' && flow.to === 'mcp-monitor' ? 'app-mcp' :
+                           flow.from === 'mcp-monitor' && flow.to === 'mcp-tools' ? 'mcp-tools' :
+                           flow.from === 'agentic-app' && flow.to === 'rag-resources' ? 'app-rag' :
+                           flow.from === 'control-plane' && flow.to === 'llm-gateway' ? 'cp-gateway' :
+                           flow.from === 'control-plane' && flow.to === 'mcp-monitor' ? 'cp-mcp' :
+                           flow.from === 'control-plane' && flow.to === 'rag-resources' ? 'cp-rag' : '';
+              
+              const isHighlighted = isFlowHighlighted(flowId);
+              const opacity = hoveredFlow && !isHighlighted ? 'opacity-30' : 'opacity-100';
+              
+              return (
+                <div 
+                  key={index} 
+                  className={`border-l-4 border-slate-300 pl-4 cursor-pointer transition-all duration-200 ${opacity}`}
+                  onMouseEnter={() => setHoveredFlow(flowId)}
+                  onMouseLeave={() => setHoveredFlow(null)}
+                >
+                  <div className={`text-sm font-bold bg-gradient-to-r ${flow.color} bg-clip-text text-transparent mb-2 ${isHighlighted ? 'scale-105' : ''} transition-transform`}>
+                    {flow.label}
+                  </div>
+                  <p className="text-sm text-slate-600">{flow.description}</p>
                 </div>
-                <p className="text-sm text-slate-600">{flow.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
