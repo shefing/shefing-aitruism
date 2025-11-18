@@ -221,7 +221,16 @@ export function UserEnvironmentDiagram() {
             <p className="text-slate-600 text-sm">Central orchestration & policy hub</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-4">
+            {/* Row 1: Discovery, Policy, Observability */}
+            <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
+              <div className="flex flex-col items-center text-center">
+                <span className="text-3xl mb-2">🔍</span>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Discovery</h4>
+                <p className="text-xs text-slate-600">Registry</p>
+              </div>
+            </div>
+
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">⚖️</span>
@@ -233,32 +242,30 @@ export function UserEnvironmentDiagram() {
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">📊</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Observability</h4>
+                <h4 className="text-xs font-bold text-slate-900 mb-1 break-words">Observability</h4>
                 <p className="text-xs text-slate-600">Dashboard</p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
+            <div className="col-span-3 bg-white rounded-lg p-6 border-2 border-slate-300 hover:shadow-xl transition-shadow">
               <div className="flex flex-col items-center text-center">
-                <span className="text-3xl mb-2">🚨</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Security</h4>
-                <p className="text-xs text-slate-600">SIEM Bus</p>
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mb-3 shadow-lg">
+                  <span className="text-4xl">🧠</span>
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">JudgeLLMs</h4>
+                <p className="text-sm text-slate-700 font-medium mb-1">AI-Powered Security Evaluation</p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Llama Firewall, NVidia Nemo, MS Presidio
+                </p>
               </div>
             </div>
 
+            {/* Row 3: RAG Client, Analytics, Security */}
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
-                <span className="text-3xl mb-2">🏛️</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Vault</h4>
-                <p className="text-xs text-slate-600">Sensitive data store</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
-              <div className="flex flex-col items-center text-center">
-                <span className="text-3xl mb-2">🔍</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Discovery</h4>
-                <p className="text-xs text-slate-600">Registry</p>
+                <span className="text-3xl mb-2">✓</span>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">RAG Client</h4>
+                <p className="text-xs text-slate-600">Validation</p>
               </div>
             </div>
 
@@ -272,19 +279,9 @@ export function UserEnvironmentDiagram() {
 
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
-                <span className="text-3xl mb-2">✓</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">RAG Client</h4>
-                <p className="text-xs text-slate-600">Validation</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
-              <div className="flex flex-col items-center text-center">
-                <span className="text-3xl mb-2">🧠</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">JudgeLLMs</h4>
-                <p className="text-xs text-slate-600 leading-tight">
-                  Llama Firewall, NVidia Nemo...
-                </p>
+                <span className="text-3xl mb-2">🚨</span>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Security</h4>
+                <p className="text-xs text-slate-600">SIEM Bus</p>
               </div>
             </div>
           </div>
