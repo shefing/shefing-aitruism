@@ -13,6 +13,7 @@ interface DataFlow {
 
 export function UserEnvironmentDiagram() {
   const [hoveredFlow, setHoveredFlow] = useState<string | null>(null);
+  const [showDataFlows, setShowDataFlows] = useState(false);
 
   const dataFlows: DataFlow[] = [
     {
@@ -82,17 +83,203 @@ export function UserEnvironmentDiagram() {
   ];
 
   const renderSVGConnections = () => {
-    return null;
+    if (!showDataFlows) return null;
+
+    return (
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 10 }}>
+        <defs>
+          <marker
+            id="arrowhead-blue"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#3b82f6" />
+          </marker>
+          <marker
+            id="arrowhead-purple"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#a855f7" />
+          </marker>
+          <marker
+            id="arrowhead-emerald"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#10b981" />
+          </marker>
+          <marker
+            id="arrowhead-orange"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#f97316" />
+          </marker>
+          <marker
+            id="arrowhead-amber"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#f59e0b" />
+          </marker>
+          <marker
+            id="arrowhead-rose"
+            markerWidth="10"
+            markerHeight="10"
+            refX="9"
+            refY="3"
+            orient="auto"
+          >
+            <polygon points="0 0, 10 3, 0 6" fill="#f43f5e" />
+          </marker>
+        </defs>
+
+        {/* Agentic App → LLM Gateway */}
+        <path
+          d="M 410 125 L 450 125 L 450 220"
+          stroke="#3b82f6"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-blue)"
+          opacity={hoveredFlow === 'app-gateway' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('app-gateway')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* LLM Gateway → External LLMs (horizontal across) */}
+        <path
+          d="M 470 260 L 540 260 L 540 335"
+          stroke="#3b82f6"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-blue)"
+          opacity={hoveredFlow === 'gateway-llm' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('gateway-llm')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* Agentic App → MCP Monitor */}
+        <path
+          d="M 270 145 L 270 500"
+          stroke="#a855f7"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-purple)"
+          opacity={hoveredFlow === 'app-mcp' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('app-mcp')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* MCP Monitor → MCP Tools */}
+        <path
+          d="M 380 540 L 430 540"
+          stroke="#a855f7"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-purple)"
+          opacity={hoveredFlow === 'mcp-tools' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('mcp-tools')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* Agentic App → RAG / Resources */}
+        <path
+          d="M 230 145 L 230 335"
+          stroke="#10b981"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-emerald)"
+          opacity={hoveredFlow === 'app-rag' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('app-rag')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* Control Plane → LLM Gateway */}
+        <path
+          d="M 640 240 Q 580 240 500 240"
+          stroke="#f97316"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-orange)"
+          opacity={hoveredFlow === 'cp-gateway' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('cp-gateway')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* Control Plane → MCP Monitor */}
+        <path
+          d="M 640 500 Q 560 500 380 520"
+          stroke="#f59e0b"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-amber)"
+          opacity={hoveredFlow === 'cp-mcp' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('cp-mcp')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+
+        {/* Control Plane → RAG / Resources */}
+        <path
+          d="M 640 370 Q 500 370 350 370"
+          stroke="#f43f5e"
+          strokeWidth="2.5"
+          fill="none"
+          markerEnd="url(#arrowhead-rose)"
+          opacity={hoveredFlow === 'cp-rag' ? 1 : 0.7}
+          onMouseEnter={() => setHoveredFlow('cp-rag')}
+          onMouseLeave={() => setHoveredFlow(null)}
+          className="pointer-events-auto cursor-pointer"
+        />
+      </svg>
+    );
   };
 
   return (
     <div className="w-full bg-gradient-to-br from-slate-50 to-blue-50 p-12 rounded-lg">
-      <h2 className="text-3xl font-bold text-slate-900 mb-2">Omniguard Architecture Diagram</h2>
-      <p className="text-slate-600 mb-12 text-lg">
-        AI Trust Platform architecture
-      </p>
+      <div className="flex justify-between items-center mb-12">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-900 mb-2">Omniguard Architecture Diagram</h2>
+          <p className="text-slate-600 text-lg">
+            AI Trust Platform architecture
+          </p>
+        </div>
+        <button
+          onClick={() => setShowDataFlows(!showDataFlows)}
+          className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+            showDataFlows
+              ? 'bg-blue-600 text-white hover:bg-blue-700'
+              : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+          }`}
+        >
+          {showDataFlows ? 'Hide' : 'Display'} Data Flows
+        </button>
+      </div>
 
       <div className="relative w-full flex gap-8 items-center">
+
         <div className="flex flex-col items-center gap-3">
           <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
             <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -286,19 +473,21 @@ export function UserEnvironmentDiagram() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg border border-slate-200 p-8 mt-12">
-        <h3 className="text-lg font-bold text-slate-900 mb-6">Data Flows</h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {dataFlows.map((flow, index) => (
-            <div key={index} className="border-l-4 border-slate-300 pl-4">
-              <div className={`text-sm font-bold bg-gradient-to-r ${flow.color} bg-clip-text text-transparent mb-2`}>
-                {flow.label}
+      {showDataFlows && (
+        <div className="bg-white rounded-lg border border-slate-200 p-8 mt-12">
+          <h3 className="text-lg font-bold text-slate-900 mb-6">Data Flows</h3>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {dataFlows.map((flow, index) => (
+              <div key={index} className="border-l-4 border-slate-300 pl-4">
+                <div className={`text-sm font-bold bg-gradient-to-r ${flow.color} bg-clip-text text-transparent mb-2`}>
+                  {flow.label}
+                </div>
+                <p className="text-sm text-slate-600">{flow.description}</p>
               </div>
-              <p className="text-sm text-slate-600">{flow.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
