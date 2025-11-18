@@ -206,7 +206,7 @@ export function UserEnvironmentDiagram() {
 
         {/* Omniguard User → Control Plane Platform */}
         <path
-          d="M 1050 285 L 1020 285"
+          d="M 1077 285 L 1020 285"
           stroke="#6366f1"
           strokeWidth={isFlowHighlighted('user-platform') ? "3.5" : "2.5"}
           fill="none"
