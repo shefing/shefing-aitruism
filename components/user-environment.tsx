@@ -231,7 +231,7 @@ export function UserEnvironmentDiagram() {
 
         {/* Control Plane → LLM Gateway */}
         <path
-          d="M 640 240 Q 580 240 500 240"
+          d="M 750 240 Q 625 240 500 240"
           stroke="#f97316"
           strokeWidth={isFlowHighlighted('cp-gateway') ? "3.5" : "2.5"}
           fill="none"
@@ -244,11 +244,11 @@ export function UserEnvironmentDiagram() {
 
         {/* Control Plane → MCP Monitor */}
         <path
-          d="M 640 500 Q 560 500 380 520"
-          stroke="#f97316" // Changed from amber to orange to match LLM Gateway arrow
+          d="M 750 500 Q 565 500 380 520"
+          stroke="#f97316"
           strokeWidth={isFlowHighlighted('cp-mcp') ? "3.5" : "2.5"}
           fill="none"
-          markerEnd="url(#arrowhead-orange)" // Changed from amber to orange arrowhead
+          markerEnd="url(#arrowhead-orange)"
           opacity={hoveredFlow && !isFlowHighlighted('cp-mcp') ? 0.2 : 1}
           onMouseEnter={() => setHoveredFlow('cp-mcp')}
           onMouseLeave={() => setHoveredFlow(null)}
@@ -257,7 +257,7 @@ export function UserEnvironmentDiagram() {
 
         {/* Control Plane → RAG / Resources */}
         <path
-          d="M 640 370 Q 500 370 350 370"
+          d="M 750 370 Q 550 370 350 370"
           stroke="#f43f5e"
           strokeWidth={isFlowHighlighted('cp-rag') ? "3.5" : "2.5"}
           fill="none"
