@@ -87,7 +87,7 @@ export function UserEnvironmentDiagram() {
 
   return (
     <div className="w-full bg-gradient-to-br from-slate-50 to-blue-50 p-12 rounded-lg">
-      <h2 className="text-3xl font-bold text-slate-900 mb-2">Architecture Diagram</h2>
+      <h2 className="text-3xl font-bold text-slate-900 mb-2">Omniguard Architecture Diagram</h2>
       <p className="text-slate-600 mb-12 text-lg">
         AI Trust Platform architecture
       </p>
@@ -117,6 +117,19 @@ export function UserEnvironmentDiagram() {
               </div>
               <p className="text-slate-600 text-xs leading-relaxed">
                 AI application that orchestrates interactions with external systems
+              </p>
+            </div>
+
+            {/* App Sidecar */}
+            <div className="bg-cyan-50 border-2 border-cyan-500 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-cyan-100 rounded-lg flex items-center justify-center">
+                  <span className="text-base">📡</span>
+                </div>
+                <h3 className="text-sm font-bold text-slate-900">App Sidecar</h3>
+              </div>
+              <p className="text-slate-600 text-xs leading-relaxed">
+                Deep behavioral analysis via OTEL and more
               </p>
             </div>
 
@@ -212,24 +225,24 @@ export function UserEnvironmentDiagram() {
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">⚖️</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">OPA/Cedar</h4>
-                <p className="text-xs text-slate-600">Policy</p>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Policy</h4>
+                <p className="text-xs text-slate-600">OPA/Cedar</p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">📊</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Dashboard</h4>
-                <p className="text-xs text-slate-600">Observability</p>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Observability</h4>
+                <p className="text-xs text-slate-600">Dashboard</p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">🚨</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">SIEM Bus</h4>
-                <p className="text-xs text-slate-600">Security</p>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Security</h4>
+                <p className="text-xs text-slate-600">SIEM Bus</p>
               </div>
             </div>
 
@@ -237,7 +250,7 @@ export function UserEnvironmentDiagram() {
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">🏛️</span>
                 <h4 className="text-sm font-bold text-slate-900 mb-1">Vault</h4>
-                <p className="text-xs text-slate-600">PII Store</p>
+                <p className="text-xs text-slate-600">Sensitive data store</p>
               </div>
             </div>
 
@@ -252,8 +265,8 @@ export function UserEnvironmentDiagram() {
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">📝</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Reports</h4>
-                <p className="text-xs text-slate-600">Analytics</p>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Analytics</h4>
+                <p className="text-xs text-slate-600">Reports</p>
               </div>
             </div>
 

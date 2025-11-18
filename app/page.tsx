@@ -28,7 +28,7 @@ export default function Home() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl font-bold text-stone-900 mb-4 text-balance">
-            AI Trust, Risk & Security Management
+            Omniguard: AI Trust, Risk & Security Management
           </h1>
           <p className="text-xl text-stone-600 max-w-3xl mx-auto text-pretty">
             Interactive guide for architecting a production-grade observability and control plane for Agentic AI Systems
@@ -364,7 +364,7 @@ async def run_report(req):
       <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-stone-900 text-stone-300">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm">
-            © 2025 AITruism - AI Trust, Risk & Security Management
+            © 2025 AITruism - Omniguard AI Trust, Risk & Security Management
           </p>
           <p className="text-xs mt-2 text-stone-500">
             Based on "Architecting a Production-Grade Observability and Control Plane for Agentic AI Systems"
