@@ -517,8 +517,8 @@ export function UserEnvironmentDiagram() {
             <div className="bg-white rounded-lg p-4 border border-slate-300 hover:shadow-md transition-shadow">
               <div className="flex flex-col items-center text-center">
                 <span className="text-3xl mb-2">🚨</span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1">Security</h4>
-                <p className="text-xs text-slate-600">SIEM Bus</p>
+                <h4 className="text-sm font-bold text-slate-900 mb-1">Events</h4>
+                <p className="text-xs text-slate-600">SIEM, XDR, ELK...</p>
               </div>
             </div>
           </div>
